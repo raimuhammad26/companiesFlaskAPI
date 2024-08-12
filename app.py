@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 import jwt
 import datetime
+import os
 
 app = Flask(__name__)
 CORS(app)  # Initialize CORS
@@ -12,11 +13,18 @@ app.config['SECRET_KEY'] = 'companykey'
 
 # Load users from JSON file
 def load_users():
-    with open('users.json') as f:
-        return json.load(f)
+    if os.path.exists('users.json'):
+        with open('users.json') as f:
+            return json.load(f)
+    return {"users": []}
     
-    # Dummy OAuth2 token
+# Dummy OAuth2 token
 access_tokens = {"admin_token": "admin"}
+
+# Save users to JSON file Function
+def save_users(users):
+    with open('users.json', 'w') as f:
+        json.dump(users, f, indent=4)
 
 # Root API
 @app.route("/")
@@ -25,6 +33,38 @@ def hello_world():
 
 # Dummy OAuth2 token storage (for demonstration purposes)
 access_tokens = {}
+
+
+# Sign-Up API
+@app.route("/signup", methods=["POST"])
+def signup():
+    # Extract user details from request
+    username = request.json.get("username")
+    password = request.json.get("password")
+    
+    if not username or not password:
+        return jsonify({"error": "Username and password required"}), 400
+    
+    print(username)
+    print(password)
+    
+    users_data = load_users()
+    users = users_data.get("users", [])
+    
+    # Check if username already exists
+    for user in users:
+        if user["username"] == username:
+            return jsonify({"error": "Username already exists"}), 400
+        
+    # Add new user
+    users.append({
+        "username": username,
+        "password": password  # In a real application, hash the password before saving
+    })
+    save_users({"users": users})
+    
+    return jsonify({"message": "User created successfully"}), 201
+
 
 # Login API
 @app.route("/oauth/token", methods=["POST"])
@@ -60,7 +100,7 @@ def oauth_token():
 # Middleware to verify token
 @app.before_request
 def verify_token():
-    if request.endpoint == 'oauth_token':
+    if request.endpoint in ['oauth_token', 'signup', 'hello_world']:
         return  # Skip token verification for the token endpoint
     
     token = request.headers.get('Authorization')
