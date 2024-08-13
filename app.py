@@ -97,10 +97,20 @@ def oauth_token():
     # If invalid credentials
     return jsonify({"error": "Invalid credentials"}), 401
 
+# Company List API
+@app.route('/company_list', methods=['GET'])
+def company_list():
+    # Load the JSON file
+    with open('companies.json', 'r') as file:
+        data = json.load(file)
+    
+    # Return the companies as a JSON response
+    return jsonify(data)
+
 # Middleware to verify token
 @app.before_request
 def verify_token():
-    if request.endpoint in ['oauth_token', 'signup', 'hello_world']:
+    if request.endpoint in ['oauth_token', 'signup', 'hello_world', 'company_list']:
         return  # Skip token verification for the token endpoint
     
     token = request.headers.get('Authorization')

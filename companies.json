@@ -1,0 +1,14 @@
+{
+    "companies": [
+        { "name": "Company A", "industry": "Medicine" },
+        { "name": "Company B", "industry": "Education" },
+        { "name": "Company C", "industry": "Tech" },
+        { "name": "Company D", "industry": "Medicine" },
+        { "name": "Company E", "industry": "Tech" },
+        { "name": "Company F", "industry": "Education" },
+        { "name": "Company G", "industry": "Medicine" },
+        { "name": "Company H", "industry": "Tech" },
+        { "name": "Company I", "industry": "Education" },
+        { "name": "Company J", "industry": "Tech" }
+    ]
+}
