@@ -107,10 +107,18 @@ def company_list():
     # Return the companies as a JSON response
     return jsonify(data)
 
+# Companies Data API
+with open('companies_tab.json') as json_file:
+    tam_data = json.load(json_file)
+    
+@app.route('/company_data', methods=['GET'])
+def get_tam_data():
+    return jsonify(tam_data)
+
 # Middleware to verify token
 @app.before_request
 def verify_token():
-    if request.endpoint in ['oauth_token', 'signup', 'hello_world', 'company_list']:
+    if request.endpoint in ['oauth_token', 'signup', 'hello_world', 'company_list', 'get_tam_data']:
         return  # Skip token verification for the token endpoint
     
     token = request.headers.get('Authorization')

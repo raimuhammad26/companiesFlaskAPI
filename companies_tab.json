@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "TAM": "Total Addressable Market",
+      "Source": "Market Research Report",
+      "Date": "2022-01-01",
+      "Details": {
+        "Description": "The total addressable market for our product is estimated to be $10 billion.",
+        "GrowthRate": "20% annually",
+        "TargetMarket": "Enterprise customers"
+      }
+    },
+    {
+      "TAM": "$10 billion",
+      "Source": "Industry Analyst",
+      "Date": "2022-02-15",
+      "Details": {
+        "Description": "The industry analyst estimates that the total addressable market for our product is $10 billion.",
+        "GrowthRate": "15% annually",
+        "TargetMarket": "Small and medium-sized businesses"
+      }
+    },
+    {
+      "TAM": "Growing rapidly",
+      "Source": "Company Press Release",
+      "Date": "2022-03-01",
+      "Details": {
+        "Description": "Our company is experiencing rapid growth in the total addressable market.",
+        "GrowthRate": "30% annually",
+        "TargetMarket": "Enterprise customers"
+      }
+    },
+    {
+      "TAM": "Estimated 500 million users",
+      "Source": "Market Research Firm",
+      "Date": "2022-04-01",
+      "Details": {
+        "Description": "The market research firm estimates that the total addressable market for our product is 500 million users.",
+        "GrowthRate": "10% annually",
+        "TargetMarket": "Consumers"
+      }
+    },
+    {
+      "TAM": "Increasing by 20% annually",
+      "Source": "Industry Report",
+      "Date": "2022-05-01",
+      "Details": {
+        "Description": "The industry report states that the total addressable market for our product is increasing by 20% annually.",
+        "GrowthRate": "20% annually",
+        "TargetMarket": "Enterprise customers"
+      }
+    }
+  ]
+}
